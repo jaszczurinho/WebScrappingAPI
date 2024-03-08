@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraping Form</title>
+</head>
+<body>
+    <h1>Scraping Form</h1>
+
+    <form method="POST" action="/">
+        <label for="keywords">Enter Keywords:</label>
+        <input type="text" name="keywords" id="keywords" required>
+        <button type="submit">Scrape</button>
+    </form>
+
+    {% if results %}
+        <h2>Scraped Data:</h2>
+        <ul>
+            {% for title, date, paragraph in results %}
+                <li>
+                    <strong>Title:</strong> {{ title }}<br>
+                    <strong>Date:</strong> {{ date }}<br>
+                    <strong>Paragraph:</strong> {{ paragraph|safe }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
